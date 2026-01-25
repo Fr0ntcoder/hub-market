@@ -1,4 +1,4 @@
-name: Deploy to Vercel (PNPM)
+name: Deploy to Vercel (PNPM via npx)
 
 on:
   push:
@@ -18,21 +18,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: 'npm-files'
 
-      - name: Enable PNPM (corepack)
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (npx pnpm)
+        run: npx pnpm@latest install --frozen-lockfile
 
       - name: Build
-        run: pnpm run build
+        run: npx pnpm@latest run build
 
       - name: Deploy to Vercel
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
+        run:
+          npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
