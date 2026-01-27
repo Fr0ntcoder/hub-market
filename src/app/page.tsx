@@ -1,3 +1,5 @@
-export default function Home() {
-	return <div className="">Home</div>
+import { Home } from '@/components/screen/home'
+
+export default function HomePage() {
+	return <Home />
 }
