@@ -1,4 +1,4 @@
-name: Deploy to Vercel (Yarn via npx)
+name: Deploy to Vercel (Yarn)
 
 on:
   push:
@@ -18,16 +18,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn' 
+          cache: 'yarn'
 
-      - name: Install dependencies (yarn)
+      - name: Install dependencies
         run: yarn install --frozen-lockfile[web:7][web:12]
 
+      - name: List available scripts
+        run: yarn run[web:21]
+
       - name: Build
-        run: yarn build[web:7]
+        run: yarn build
 
       - name: Deploy to Vercel
         run: npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}[web:11]
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}[web:11][cite:1]
