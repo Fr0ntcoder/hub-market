@@ -1,4 +1,4 @@
-name: Deploy to Vercel (Yarn)
+name: Deploy to Vercel (Yarn + Next.js)
 
 on:
   push:
@@ -18,19 +18,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: 'yarn'[web:6]
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile[web:7][web:12]
+        run: yarn install --frozen-lockfile[web:7]
 
-      - name: List available scripts
-        run: yarn run[web:21]
-
-      - name: Build
-        run: yarn build
+      - name: Build with Vercel CLI  
+        run: npx vercel@latest build --token=${{ secrets.VERCEL_TOKEN }}[web:11][web:26]
 
       - name: Deploy to Vercel
-        run: npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
+          else
+            npx vercel@latest --token=${{ secrets.VERCEL_TOKEN }} --confirm  # Preview для PR
+          fi
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}[web:11][cite:1]
