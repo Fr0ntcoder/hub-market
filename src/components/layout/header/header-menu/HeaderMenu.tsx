@@ -23,11 +23,11 @@ export const HeaderMenu = () => {
 					{item.href === PagesConfig.LOGIN ? (
 						<Tooltip key='bottom'>
 							<TooltipTrigger className='flex flex-col items-center'>
-								<User2 size={25} />
+								<User2 size={20} />
 								Войти
 							</TooltipTrigger>
 							<TooltipContent
-								className='flex flex-col gap-3 bg-white pt-2 shadow'
+								className='z-20 flex flex-col gap-3 bg-white pt-2 shadow'
 								sideOffset={10}
 							>
 								<p className='text-sm'>
@@ -48,7 +48,7 @@ export const HeaderMenu = () => {
 						</Tooltip>
 					) : (
 						<Link href={item.href} className='flex flex-col items-center'>
-							<item.icon size={25} />
+							<item.icon size={20} />
 							{item.text}
 						</Link>
 					)}

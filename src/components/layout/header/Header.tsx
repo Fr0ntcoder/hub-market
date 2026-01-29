@@ -1,6 +1,7 @@
 import { Container } from '@/components/ui'
 
 import { Logo } from '@/components/elements/logo'
+import { SelectLanguage } from '@/components/elements/select-language'
 
 import { CatalogMenu } from './catalog-menu'
 import { HeaderMenu } from './header-menu'
@@ -16,6 +17,7 @@ export const Header = () => {
 				</div>
 				<Search />
 				<HeaderMenu />
+				<SelectLanguage />
 			</Container>
 		</header>
 	)
