@@ -1,15 +1,17 @@
 import { LayoutGrid } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui'
 
 export const CatalogMenu = () => {
+	const t = useTranslations('header')
 	return (
 		<Tooltip key='bottom'>
 			<TooltipTrigger className='bg-primary text-primary-foreground hover:bg-primary/80 flex cursor-pointer items-center justify-between gap-1 rounded px-2 py-1.5 transition-all duration-300'>
 				<LayoutGrid />
-				Каталог
+				{t('catalog')}
 			</TooltipTrigger>
-			<TooltipContent>
+			<TooltipContent className='bg-white'>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
 				distinctio dolore quod? Harum quos voluptatum deserunt vitae, doloribus
 				suscipit beatae dolore, eius consectetur perspiciatis quae, a corporis?
