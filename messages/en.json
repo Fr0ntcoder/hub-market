@@ -1,5 +1,6 @@
 {
 	"header": {
-		"catalog": "Catalog"
+		"catalog": "Catalog",
+		"userTrigger": "Sign In"
 	}
 }

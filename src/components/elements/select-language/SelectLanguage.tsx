@@ -1,8 +1,7 @@
-'use client'
-
 import Image from 'next/image'
-import { useState } from 'react'
-import cookie from 'js-cookie'
+import { useParams } from 'next/navigation'
+import { useMemo, useTransition } from 'react'
+
 import {
 	Select,
 	SelectContent,
@@ -11,21 +10,35 @@ import {
 	SelectTrigger
 } from '@/components/ui'
 
+import { usePathname, useRouter } from '@/i18n/navigation'
+
 import { selectLanguageData } from './select-language.data'
 
 type TypeLanguage = 'ru' | 'en'
 
 export const SelectLanguage = () => {
-	const [language, setLanguage] = useState<TypeLanguage>('ru')
-	const currentLanguage = selectLanguageData.find(
-		item => item.code === language
+	const router = useRouter()
+	const [isPending, startTransition] = useTransition()
+	const pathname = usePathname()
+
+	const { locale } = useParams()
+
+	const currentLanguage = useMemo(
+		() => selectLanguageData.find(item => item.code === locale),
+		[locale]
 	)
+
 	const onHandleLanguage = (value: TypeLanguage) => {
-		cookie
-		setLanguage(value)
+		startTransition(() => {
+			router.replace(pathname, { locale: value })
+		})
 	}
+
 	return (
-		<Select value={language} onValueChange={onHandleLanguage}>
+		<Select
+			value={currentLanguage?.code}
+			onValueChange={value => onHandleLanguage(value as TypeLanguage)}
+		>
 			<SelectTrigger className='flex w-full max-w-20 items-center'>
 				<Image
 					src={currentLanguage?.flag ?? ''}

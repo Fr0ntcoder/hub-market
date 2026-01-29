@@ -1,4 +1,5 @@
 import { User2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 import {
@@ -13,6 +14,7 @@ import { PagesConfig } from '@/config'
 import { HeaderMenuData } from './header-menu.data'
 
 export const HeaderMenu = () => {
+	const t = useTranslations('header')
 	return (
 		<ul className='flex gap-4'>
 			{HeaderMenuData.map(item => (
@@ -24,7 +26,7 @@ export const HeaderMenu = () => {
 						<Tooltip key='bottom'>
 							<TooltipTrigger className='flex flex-col items-center'>
 								<User2 size={20} />
-								Войти
+								{t('userTrigger')}
 							</TooltipTrigger>
 							<TooltipContent
 								className='z-20 flex flex-col gap-3 bg-white pt-2 shadow'

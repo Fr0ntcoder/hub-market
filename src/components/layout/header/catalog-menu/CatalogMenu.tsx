@@ -5,6 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui'
 
 export const CatalogMenu = () => {
 	const t = useTranslations('header')
+	
 	return (
 		<Tooltip key='bottom'>
 			<TooltipTrigger className='bg-primary text-primary-foreground hover:bg-primary/80 flex cursor-pointer items-center justify-between gap-1 rounded px-2 py-1.5 transition-all duration-300'>

@@ -1,12 +1,25 @@
+'use client'
+
+import dynamic from 'next/dynamic'
+
 import { Container } from '@/components/ui'
 
 import { Logo } from '@/components/elements/logo'
-import { SelectLanguage } from '@/components/elements/select-language'
 
 import { CatalogMenu } from './catalog-menu'
 import { HeaderMenu } from './header-menu'
 import { Search } from './search'
+import { useTranslations } from 'next-intl'
 
+const DynamicSelectLanguage = dynamic(
+	() =>
+		import('../../elements/select-language/SelectLanguage').then(
+			mod => mod.SelectLanguage
+		),
+	{
+		ssr: false
+	}
+)
 export const Header = () => {
 	return (
 		<header>
@@ -17,7 +30,7 @@ export const Header = () => {
 				</div>
 				<Search />
 				<HeaderMenu />
-				<SelectLanguage />
+				<DynamicSelectLanguage />
 			</Container>
 		</header>
 	)

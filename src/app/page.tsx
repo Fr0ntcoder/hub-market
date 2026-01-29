@@ -1,5 +1,6 @@
-import { Home } from '@/components/screen/home'
+import { redirect } from 'next/navigation'
 
-export default function HomePage() {
-	return <Home />
+
+export default function RootPage() {
+	redirect('/ru')
 }
