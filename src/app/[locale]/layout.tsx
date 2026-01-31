@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
-import { Geist_Mono } from 'next/font/google'
+import { Noto_Sans } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
 import { MainLayout } from '@/components/layout/main-layout'
@@ -10,9 +10,9 @@ import { routing } from '@/i18n/routing'
 
 import '../globals.css'
 
-const inter = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin']
+const inter = Noto_Sans({
+	variable: '--font-noto-sans',
+	subsets: ['latin', 'cyrillic']
 })
 
 export const metadata: Metadata = {
