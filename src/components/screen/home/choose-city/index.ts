@@ -1,1 +1,1 @@
-export * from './ChooseCity'
+export {default as ChooseCity} from './ChooseCity'

@@ -1,1 +1,1 @@
-export * from './HomeSlider'
+export { default as HomeSlider } from './HomeSlider'

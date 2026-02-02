@@ -19,7 +19,8 @@ const cat = 'Москва'
 interface Props {
 	className?: string
 }
-export const Search = ({ className }: Props) => {
+
+const Search = ({ className }: Props) => {
 	const [products, setProducts] = useState([])
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [query, setQuery] = useState<string>('')
@@ -71,3 +72,5 @@ export const Search = ({ className }: Props) => {
 		</div>
 	)
 }
+
+export default Search

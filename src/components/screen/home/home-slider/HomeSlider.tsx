@@ -13,7 +13,7 @@ import {
 
 import { homeSliderData } from './home-slider.data'
 
-export const HomeSlider = () => {
+const HomeSlider = () => {
 	return (
 		<Carousel
 			className='w-full'
@@ -46,3 +46,5 @@ export const HomeSlider = () => {
 		</Carousel>
 	)
 }
+
+export default HomeSlider

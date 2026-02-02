@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '@/components/ui'
 
-export const ChooseCity = () => {
+const ChooseCity = () => {
 	const [city, setCity] = useState<string>('Москва')
 	return (
 		<Dialog>
@@ -25,3 +25,5 @@ export const ChooseCity = () => {
 		</Dialog>
 	)
 }
+
+export default ChooseCity

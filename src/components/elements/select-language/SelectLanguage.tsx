@@ -16,13 +16,13 @@ import { selectLanguageData } from './select-language.data'
 
 type TypeLanguage = 'ru' | 'en'
 
-export const SelectLanguage = () => {
+const SelectLanguage = () => {
 	const router = useRouter()
 	const [isPending, startTransition] = useTransition()
 	const pathname = usePathname()
 
 	const { locale } = useParams()
-
+	console.log(locale)
 	const currentLanguage = useMemo(
 		() => selectLanguageData.find(item => item.code === locale),
 		[locale]
@@ -30,7 +30,8 @@ export const SelectLanguage = () => {
 
 	const onHandleLanguage = (value: TypeLanguage) => {
 		startTransition(() => {
-			router.replace(pathname, { locale: value })
+			const cleanPath = pathname.replace(/^\/(ru|en)/, '') || '/'
+			router.replace(cleanPath, { locale: value })
 		})
 	}
 
@@ -61,3 +62,5 @@ export const SelectLanguage = () => {
 		</Select>
 	)
 }
+
+export default SelectLanguage

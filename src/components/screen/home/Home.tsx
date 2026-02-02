@@ -1,9 +1,9 @@
 import { Container } from '@/components/ui'
 
 import { ChooseCity } from './choose-city'
-import { HomeSlider } from './home-slider/HomeSlider'
+import { HomeSlider } from './home-slider'
 
-export const Home = () => {
+const Home = () => {
 	return (
 		<Container className='flex flex-col items-start gap-5'>
 			<ChooseCity />
@@ -11,3 +11,5 @@ export const Home = () => {
 		</Container>
 	)
 }
+
+export default Home

@@ -1,8 +1,8 @@
-import { db } from '.'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 
-import * as schema from './schema'
+import { db } from './db'
+import * as schema from './db/schema'
 
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
@@ -12,7 +12,7 @@ export const auth = betterAuth({
 	emailAndPassword: {
 		enabled: true
 	},
-	trustedOrigins: [`${process.env.BETTER_AUTH_URL}`]
+	trustedOrigins: ['http://localhost:3000']
 })
 
 export type Session = typeof auth.$Infer.Session.session

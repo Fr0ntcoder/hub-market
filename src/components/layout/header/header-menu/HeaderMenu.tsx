@@ -13,7 +13,7 @@ import { PagesConfig } from '@/config'
 
 import { HeaderMenuData } from './header-menu.data'
 
-export const HeaderMenu = () => {
+const HeaderMenu = () => {
 	const t = useTranslations('header')
 	return (
 		<ul className='flex gap-4'>
@@ -59,3 +59,5 @@ export const HeaderMenu = () => {
 		</ul>
 	)
 }
+
+export default HeaderMenu

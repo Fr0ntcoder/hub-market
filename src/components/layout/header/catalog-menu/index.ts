@@ -1,1 +1,1 @@
-export * from './CatalogMenu'
+export { default as CatalogMenu } from './CatalogMenu'

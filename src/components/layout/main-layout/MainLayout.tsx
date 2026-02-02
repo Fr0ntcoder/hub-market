@@ -1,10 +1,11 @@
 'use client'
+
 import { PropsWithChildren } from 'react'
 
-import { Footer } from '../footer'
-import { Header } from '../header/Header'
+import Footer from '../footer/Footer'
+import Header from '../header/Header'
 
-export const MainLayout = ({ children }: PropsWithChildren) => {
+const MainLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<div className='flex min-h-full flex-col'>
 			<Header />
@@ -13,3 +14,5 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
 		</div>
 	)
 }
+
+export default MainLayout
