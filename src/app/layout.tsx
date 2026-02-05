@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { Noto_Sans } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 
-import { Toaster } from '@/components/ui'
+import { Toaster } from '@/shared/components/ui'
 
 import './globals.css'
 

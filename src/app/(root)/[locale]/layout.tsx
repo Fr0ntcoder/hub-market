@@ -1,8 +1,7 @@
-
-import { MainLayout } from '@/components/layout/main-layout'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 
+import { MainLayout } from '@/shared/components/layout/main-layout'
 
 type Props = {
 	children: React.ReactNode

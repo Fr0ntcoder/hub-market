@@ -1,5 +1,6 @@
-import { Auth } from '@/components/screen/auth'
 import { Metadata } from 'next'
+
+import { Auth } from '@/features/auth'
 
 export const metadata: Metadata = {
 	title: 'Страница авторизации'
