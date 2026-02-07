@@ -2,19 +2,22 @@ import { unstable_cache } from 'next/cache'
 import 'server-only'
 
 import { db } from '@/lib/db'
-import { product } from '@/lib/db/schema'
-import { TProduct } from '@/shared/types'
+import { TProductWithReviews } from '@/shared/types/product.types'
 
 interface IGetProduct {
-	data: TProduct[]
+	data: TProductWithReviews[]
 	error: string | null
 }
 
 export const getProducts = unstable_cache(
 	async (): Promise<IGetProduct> => {
 		try {
-			const res = await db.select().from(product)
-
+			const res = await db.query.product.findMany({
+				with: {
+					reviews: true
+				}
+			})
+			console.log(res)
 			return { data: res || [], error: null }
 		} catch (error) {
 			console.log('Ошибка получения продуктов', error)

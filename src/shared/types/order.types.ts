@@ -4,3 +4,6 @@ import { order, orderItem } from '@/lib/db/schema'
 
 export type TOrder = InferSelectModel<typeof order>
 export type TOrderItem = InferSelectModel<typeof orderItem>
+export type TOrderWithItems = TOrder & {
+	items: TOrderItem[]
+}

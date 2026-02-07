@@ -1,7 +1,13 @@
+import { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
+const nextConfig: NextConfig = {
+	images: {
+		remotePatterns: [
+			{ protocol: 'https', hostname: 'ir.ozone.ru', port: '', pathname: '/**' }
+		]
+	}
+}
+
 const withNextIntl = createNextIntlPlugin('./src/shared/i18n/request.ts')
-
-const nextConfig = {}
-
 export default withNextIntl(nextConfig)

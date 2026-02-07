@@ -1,8 +1,9 @@
-import { TProduct } from '@/shared/types'
 import { IFetcher } from '@/shared/types/other'
+import { TProductWithReviews } from '@/shared/types/product.types'
 
 import { EmptyBlock } from '../../empty-block'
 import { ErrorBlock } from '../../error-block'
+import { ProductCard } from '../product-card'
 
 interface Props<T> {
 	title?: string
@@ -10,7 +11,7 @@ interface Props<T> {
 	fetchData: IFetcher<T>
 }
 
-const ProductBlock = async <T extends TProduct>({
+const ProductBlock = async <T extends TProductWithReviews>({
 	title,
 	fetchData
 }: Props<T>) => {
@@ -26,9 +27,9 @@ const ProductBlock = async <T extends TProduct>({
 	return (
 		<>
 			<h3 className='mb-4 text-2xl font-bold'>{title}</h3>
-			<div className='grid grid-cols-4 gap-5'>
-				{data.map(item => (
-					<div key={item.id}>{item.name}</div>
+			<div className='grid w-full grid-cols-4 gap-5'>
+				{data.map(product => (
+					<ProductCard key={product.id} product={product} />
 				))}
 			</div>
 		</>
